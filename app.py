@@ -10,10 +10,11 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 # Load saved models and encoders
-clf = joblib.load(open('./model.pkl', 'rb'))
-ohe = joblib.load(open('./ohe.pkl', 'rb'))
-scaler = joblib.load(open('./scaler.pkl', 'rb'))
-label = joblib.load(open('./label.pkl', 'rb'))
+clf = joblib.load(open('./model.pkl', 'rb'), mmap_mode='r')
+ohe = joblib.load(open('./ohe.pkl', 'rb'), mmap_mode='r')
+scaler = joblib.load(open('./scaler.pkl', 'rb'), mmap_mode='r')
+label = joblib.load(open('./label.pkl', 'rb'), mmap_mode='r')
+
 
 # Fix OneHotEncoder handle_unknown issue
 ohe.handle_unknown = 'ignore'
